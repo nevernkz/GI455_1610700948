@@ -2,35 +2,35 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using WebSocketSharp;
+using UnityEngine.UI;
 
 namespace ProgramChat
 {
+
     public class WebsocketConnection : MonoBehaviour
     {
         private WebSocket websocket;
-        // Start is called before the first frame update
-        void Start()
+        public InputField inputIP;
+        public InputField inputPort;
+        public string inputip, inputport;
+
+        
+        /*void Start()
         {
-            websocket = new WebSocket("ws://127.0.0.1:49151/");
+            websocket = new WebSocket("ws://127.0.0.1:25500/");
 
             websocket.OnMessage += OnMessage;
 
             websocket.Connect();
 
-            //websocket.Send("I'm cuming");
-
-        }
-
-        // Update is called once per frame
+        }*/
         void Update()
         {
             if(Input.GetKeyDown(KeyCode.Return))
             {
-                if(websocket.ReadyState == WebSocketState.Open)
-                {
-                    websocket.Send("Random number :"+Random.Range(0,9999));
+                websocket.Send("Number : " + Random.Range(0, 9999));
+                
 
-                }
             }
         }
         private void OnDestroy()
@@ -39,11 +39,21 @@ namespace ProgramChat
             { 
                 websocket.Close(); 
             }
-            
         }
-        public void OnMessage(object sender , MessageEventArgs messageEventArgs)
+        public void OnMessage(object sender, MessageEventArgs messageEventArgs)
         {
-            Debug.Log("Receive msg" + messageEventArgs);
+            Debug.Log("Message form Server : " + messageEventArgs.Data);
+        }
+
+        public void ClickButtonToConnect()
+        {
+            inputip = inputIP.text;
+            inputport = inputPort.text;
+
+
+            websocket = new WebSocket("ws://"+inputip+":"+inputport+"/");
+            websocket.OnMessage += OnMessage;
+            websocket.Connect();
         }
     }
 }
