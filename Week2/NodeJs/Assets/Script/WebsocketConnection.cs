@@ -5,8 +5,6 @@ using WebSocketSharp;
 using UnityEngine.UI;
 
 
-
-
 namespace ProgramChat
 {
    
@@ -26,61 +24,30 @@ namespace ProgramChat
         public GameObject ButtonSendMessage;
         public GameObject Chatpanel;
         public GameObject TextGameObject;
-       
+        public GameObject ChatShowText;
 
         MessageEventArgs messageEventArgs;
-
+        
         private string inputip, inputport, chatstr = null;
-        public string ChatTextshow = null;
+        public string ChatTextshow ;
         public string Textgameobjectother;
 
-        [SerializeField]
-        List<Message> messagesList = new List<Message>();
             private void Awake()
         {
             ChatUI.SetActive(false);
             ChatTextShowGameObject.SetActive(false);
             Scrollview.SetActive(false);
             ButtonSendMessage.SetActive(false);
-            
-
+            ChatShowText.SetActive(false);
 
         }
-        public void ChatMaija(GameObject ChatAdobe)
-        {
-            //chatAdobe.Add(chatstr);
-        }
+      
 
-        /*
-        void Start()
-        {
-            
-              websocket = new WebSocket("ws://127.0.0.1:25500/");
-
-            websocket.OnMessage += OnMessage;
-
-            websocket.Connect();
-        }
-            */
-
-    
         void Update()
-        {
+        {        
             chatstr = Chat.text;
-            
-            ChatTextshows.GetComponent<Text>().text = ChatTextshow;
-            //if (Input.GetKeyDown(KeyCode.Return))
-            //{
-            //    Chat.text = null;
-            //    chatstr = Chat.text;
-            //    websocket.Send(chatstr);
-                
-
-
-
-            //    //websocket.Send("Number : " + Random.Range(0, 9999));
-
-            //}
+            Textgameobjectother = Chat.text;
+            ChatTextshows.GetComponent<Text>().text =ChatTextshow;
 
         }
         private void OnDestroy()
@@ -94,7 +61,7 @@ namespace ProgramChat
         {
             
             Debug.Log("Message form Server : " + messageEventArgs.Data);
-            ChatTextshow = messageEventArgs.Data;
+            ChatTextshow += "\n"+messageEventArgs.Data;
 
             ChatTextshows.GetComponent<Text>().text = ChatTextshow;
             
@@ -111,10 +78,7 @@ namespace ProgramChat
             websocket = new WebSocket("ws://"+inputip+":"+inputport+"/");
             
             websocket.OnMessage += OnMessage;
-            websocket.Connect();
-            
-            
-
+            websocket.Connect(); 
             SetacttiveUI();
 
         }
@@ -130,39 +94,30 @@ namespace ProgramChat
             connectbutton.SetActive(false);
             Scrollview.SetActive(true);
             ButtonSendMessage.SetActive(true);
+            ChatShowText.SetActive(true);
+           
         }
         
         public void SendChat()
         {
-            //clearInputfield chat
+            
             Chat.text = null;
-            //chatstr = Chat.text;
-            websocket.Send(chatstr);
-            SendMessagetochat();
+            websocket.Send(Textgameobjectother);
+            
 
 
         }
-        public void SendMessagetochat()
-        {
-            Message newChat = new Message();
-            //text = Chat.text;
-            Debug.Log(chatstr);
-            //newChat.text = text;
-            GameObject newText = Instantiate(TextGameObject, Chatpanel.transform);
-            newChat.textObject = newText.GetComponent<Text>();
-            newChat.textObject.text = newChat.text;
-            messagesList.Add(newChat);
-            //SendMessagetochat(Chat.text);
+        public void SendMessagetochat(string text)
+        {        
+            SendChat();
         }
+       
         
     }
+       
+}
     
-}
-[System.Serializable]
-public class Message
-{
-    public string text;
-    public Text textObject;
-}
+
+
 
 
