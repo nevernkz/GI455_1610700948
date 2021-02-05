@@ -7,10 +7,15 @@ var websocketServer = new websocket.Server({port:25500}, ()=>{
  var wsList =[];
    websocketServer.on("connection", (ws,rq)=>{
        console.log('client connected');
+       
        wsList.push(ws);
        ws.on("message" , (data)=>{
-           console.log("send from client : "+ data);
+        
+        console.log("send from client : "+data);
            Boardcast(data);
+        
+        
+        
     
        });
        ws.on("close",()=>{

@@ -10,6 +10,7 @@ ScriptsOnlyBuild:
     - TMPro.TMP_Settings
     - TMPro.TMP_SpriteAsset
     - TMPro.TMP_StyleSheet
+    - TMPro.TextMeshProUGUI
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
     - UnityEditor.TestTools.TestRunner.TestListCacheData
@@ -36,8 +37,6 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 21
       Script: {instanceID: 0}
-    - Class: 23
-      Script: {instanceID: 0}
     - Class: 28
       Script: {instanceID: 0}
     - Class: 48
@@ -63,27 +62,29 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 2410}
     - Class: 114
-      Script: {instanceID: 2576}
+      Script: {instanceID: 2574}
     - Class: 114
-      Script: {instanceID: 2602}
+      Script: {instanceID: 2600}
     - Class: 114
-      Script: {instanceID: 2686}
+      Script: {instanceID: 2682}
     - Class: 114
-      Script: {instanceID: 2730}
+      Script: {instanceID: 2726}
     - Class: 114
-      Script: {instanceID: 2872}
+      Script: {instanceID: 2868}
     - Class: 114
-      Script: {instanceID: 3080}
+      Script: {instanceID: 2920}
     - Class: 114
-      Script: {instanceID: 3104}
+      Script: {instanceID: 3076}
     - Class: 114
-      Script: {instanceID: 3172}
+      Script: {instanceID: 3100}
     - Class: 114
-      Script: {instanceID: 3432}
+      Script: {instanceID: 3168}
     - Class: 114
-      Script: {instanceID: 3446}
+      Script: {instanceID: 3428}
     - Class: 114
-      Script: {instanceID: 3570}
+      Script: {instanceID: 3442}
+    - Class: 114
+      Script: {instanceID: 3566}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -157,7 +158,7 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: 7bf2c66b82cfcd9fa9e407bfcb183b84
+      Hash: 7e32a288f4d7db607534c1024209e5e6
     assemblyName: Assembly-CSharp.dll
     namespaceName: ProgramChat
     className: WebsocketConnection
