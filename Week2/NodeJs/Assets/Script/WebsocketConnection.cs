@@ -9,17 +9,7 @@ using TMPro;
 
 namespace ProgramChat
 {
-    internal class Message
-    {
-        public string UserId;
-        public string Msg;
-
-        public Message(string id, string message)
-        {
-            UserId = id;
-            Msg = message;
-        }
-    }
+   
 
     public class WebsocketConnection : MonoBehaviour
     {
@@ -96,17 +86,7 @@ namespace ProgramChat
             {
                 textMesh.GetComponent<TextMeshProUGUI>().text = "\n<align=left>" + ChatTextshow;
             }
-            //if (user == "1")
-            //{
-            //    ChatTextshow = messageEventArgs.Data;
-            //    textMesh.GetComponent<TextMeshProUGUI>().text = "\n<align=right>" + ChatTextshow;
-            //}
-            //else
-            //{
-            //    Debug.Log("Message from Server" + messageEventArgs.Data);
-            //    ChatTextshow += "\n<align=left>" + messageEventArgs.Data;
-            //    textMesh.GetComponent<TextMeshProUGUI>().text = "\n<align=left>" + ChatTextshow;
-            //}
+            
 
         }
         private void OnDestroy()
@@ -123,19 +103,7 @@ namespace ProgramChat
             Debug.Log("Message form Server : " + messageEventArgs.Data);
             ChatTextshow += "\n" + messageEventArgs.Data;
             ChatTextshows.GetComponent<Text>().text = ChatTextshow;
-            //var information = JsonUtility.FromJson <Message>(messageEventArgs.Data);
             
-            //if (user=="1")
-            //{
-            //    ChatTextshow =messageEventArgs.Data;
-            //    textMesh.GetComponent<TextMeshProUGUI>().text = "\n<align=right>" + ChatTextshow;
-            //}
-            //else
-            //{
-            //    Debug.Log("Message from Server" + messageEventArgs.Data);
-            //    ChatTextshow += "\n<align=left>" + messageEventArgs.Data;
-            //    textMesh.GetComponent<TextMeshProUGUI>().text = "\n<align=left>" + ChatTextshow;
-            //}
 
         }
 
@@ -157,7 +125,7 @@ namespace ProgramChat
         {
             //SetActive
             ChatUI.SetActive(true);
-            ChatTextShowGameObject.SetActive(true);
+            ChatTextShowGameObject.SetActive(false);
             IP.SetActive(false);
             Port.SetActive(false);
             Userno.SetActive(false);
