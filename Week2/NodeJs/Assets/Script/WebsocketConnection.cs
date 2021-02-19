@@ -9,17 +9,29 @@ using TMPro;
 
 namespace ProgramChat
 {
-   
 
+    public class Messagedata
+    {
+        public string Username;
+        public string Message;
+
+        public Messagedata(string username, string message)
+        {
+            Username = username;
+            Message = message;
+        }
+    }
     public class WebsocketConnection : MonoBehaviour
     {
         [SerializeField] Text text;
         private WebSocket websocket;
-       
-        public InputField Chat;
-       
 
-        
+        public InputField Chat;
+        public InputField UsernameText;
+
+
+        public string username;
+        public string message;
         public GameObject connectbutton;
         public GameObject ChatUI;
         public GameObject ChatTextShowGameObject;
@@ -29,11 +41,11 @@ namespace ProgramChat
         public GameObject Chatpanel;
         public GameObject TextGameObject;
         public GameObject ChatShowText;
-
+        public GameObject UsernameGameobject;
 
         public GameObject TextMeshPro;
 
-        
+
 
 
         MessageEventArgs messageEventArgs;
@@ -44,8 +56,8 @@ namespace ProgramChat
 
         public string UserNumber;
         public TextMeshProUGUI textMesh;
-        
-     
+
+
 
 
         private void Awake()
@@ -55,13 +67,13 @@ namespace ProgramChat
             Scrollview.SetActive(false);
             ButtonSendMessage.SetActive(false);
             ChatShowText.SetActive(false);
-          
+            UsernameGameobject.SetActive(true);
             TextMeshPro.SetActive(false);
-                
+
         }
         private void Start()
         {
-            
+
         }
 
 
@@ -71,15 +83,7 @@ namespace ProgramChat
             Textgameobjectother = Chat.text;
             ChatTextshows.GetComponent<Text>().text = ChatTextshow;
 
-            /*if (user == 0)
-            {
-                textMesh.GetComponent<TextMeshProUGUI>().text = "\n<align=right>" + ChatTextshow;
-            }
-            else
-            {
-                textMesh.GetComponent<TextMeshProUGUI>().text = "\n<align=left>" + ChatTextshow;
-            }
-            */
+           
 
         }
         private void OnDestroy()
@@ -89,14 +93,42 @@ namespace ProgramChat
                 websocket.Close();
             }
         }
-        public void OnMessage(object sender, MessageEventArgs messageEventArgs)
+        public void SendChat()
+        {
+            var message = new Messagedata(username, Chat.text);
+            var json = JsonUtility.ToJson(message);
+            websocket.Send(json);
+            Chat.text = null;
+            websocket.Send(Textgameobjectother);
+        }
+        public void SendMessagetochat(string text)
         {
 
-           
-            Debug.Log("Message form Server : " + messageEventArgs.Data);
-            ChatTextshow += "\n" + messageEventArgs.Data;
-            ChatTextshows.GetComponent<Text>().text = ChatTextshow;
-            
+            SendChat();
+        }
+
+
+        public void OnMessage(object sender, MessageEventArgs messageEventArgs)
+        {
+            var data = JsonUtility.FromJson<Messagedata>(messageEventArgs.Data);
+            if (data.Username == username)
+            {
+                Debug.Log("Same Account ");
+                textMesh.text += "\n<align=right>" + data.Username + ": <align=right>" + data.Message;
+            }
+            else
+            {
+                Debug.Log("None Same Account ");
+                textMesh.text += "\n<align=left>" + data.Username + ": <align=left>" + data.Message;
+            }
+
+            Debug.Log("Message form Server : " + data.Message);
+            /*ChatTextshow += "\n" + messageEventArgs.Data;
+            //ChatTextshow += "\n" + messageEventArgs.Data;
+            textMesh.GetComponent<TextMeshProUGUI>().text = "\n<align=right>" + ChatTextshow;
+            textMesh.GetComponent<TextMeshProUGUI>().text = "\n<align=left>" + ChatTextshow;
+            ChatTextshows.GetComponent<Text>().text = ChatTextshow; */
+
 
         }
 
@@ -104,10 +136,10 @@ namespace ProgramChat
         {
 
             //TextFormat
-           
+
 
             websocket = new WebSocket("ws://127.0.0.1:25500/");
-
+            username = UsernameText.text;
             websocket.OnMessage += OnMessage;
             websocket.Connect();
             SetacttiveUI();
@@ -118,25 +150,14 @@ namespace ProgramChat
             //SetActive
             ChatUI.SetActive(true);
             ChatTextShowGameObject.SetActive(false);
-          
+
             connectbutton.SetActive(false);
             Scrollview.SetActive(true);
             ButtonSendMessage.SetActive(true);
             ChatShowText.SetActive(false);
             TextMeshPro.SetActive(true);
 
-
-        }
-
-        public void SendChat()
-        {
-
-            Chat.text = null;
-            websocket.Send(Textgameobjectother);
-        }
-        public void SendMessagetochat(string text)
-        {
-            SendChat();
+            UsernameGameobject.SetActive(false);
         }
 
     }

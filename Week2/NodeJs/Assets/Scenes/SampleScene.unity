@@ -154,6 +154,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   text: {fileID: 1925542555}
   Chat: {fileID: 728216617}
+  UsernameText: {fileID: 204446758}
+  username: 
+  message: 
   connectbutton: {fileID: 2109327558}
   ChatUI: {fileID: 728216615}
   ChatTextShowGameObject: {fileID: 801437450}
@@ -161,8 +164,9 @@ MonoBehaviour:
   Scrollview: {fileID: 1552305205}
   ButtonSendMessage: {fileID: 1682405610}
   Chatpanel: {fileID: 786198809}
-  TextGameObject: {fileID: 801437450}
-  ChatShowText: {fileID: 801437450}
+  TextGameObject: {fileID: 669674117}
+  ChatShowText: {fileID: 669674117}
+  UsernameGameobject: {fileID: 204446756}
   TextMeshPro: {fileID: 669674117}
   ChatTextshow: 
   Textgameobjectother: 555

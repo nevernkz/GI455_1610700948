@@ -50,41 +50,41 @@ ScriptsOnlyBuild:
     - Class: 108
       Script: {instanceID: 0}
     - Class: 114
-      Script: {instanceID: 4456}
+      Script: {instanceID: 1458}
     - Class: 114
-      Script: {instanceID: 4586}
+      Script: {instanceID: 1526}
     - Class: 114
-      Script: {instanceID: 4788}
+      Script: {instanceID: 1658}
     - Class: 114
-      Script: {instanceID: 5166}
+      Script: {instanceID: 1862}
     - Class: 114
-      Script: {instanceID: 5182}
+      Script: {instanceID: 2246}
     - Class: 114
-      Script: {instanceID: 5328}
+      Script: {instanceID: 2410}
     - Class: 114
-      Script: {instanceID: 5484}
+      Script: {instanceID: 2574}
     - Class: 114
-      Script: {instanceID: 5510}
+      Script: {instanceID: 2600}
     - Class: 114
-      Script: {instanceID: 5592}
+      Script: {instanceID: 2682}
     - Class: 114
-      Script: {instanceID: 5636}
+      Script: {instanceID: 2726}
     - Class: 114
-      Script: {instanceID: 5776}
+      Script: {instanceID: 2868}
     - Class: 114
-      Script: {instanceID: 5826}
+      Script: {instanceID: 2920}
     - Class: 114
-      Script: {instanceID: 5980}
+      Script: {instanceID: 3076}
     - Class: 114
-      Script: {instanceID: 6002}
+      Script: {instanceID: 3100}
     - Class: 114
-      Script: {instanceID: 6070}
+      Script: {instanceID: 3168}
     - Class: 114
-      Script: {instanceID: 6330}
+      Script: {instanceID: 3428}
     - Class: 114
-      Script: {instanceID: 6344}
+      Script: {instanceID: 3442}
     - Class: 114
-      Script: {instanceID: 6468}
+      Script: {instanceID: 3566}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -102,6 +102,12 @@ ScriptsOnlyBuild:
     - Class: 224
       Script: {instanceID: 0}
   scriptHashData:
+  - hash:
+      serializedVersion: 2
+      Hash: 699619b86d9359741a4f58540298c80b
+    assemblyName: UnityEngine.UI.dll
+    namespaceName: UnityEngine.UI
+    className: Text
   - hash:
       serializedVersion: 2
       Hash: 5ab533713adae59372fb3e10a585c186
@@ -152,7 +158,7 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: 7e32a288f4d7db607534c1024209e5e6
+      Hash: 9a61b01850821b7e7d08e7b2f4784aba
     assemblyName: Assembly-CSharp.dll
     namespaceName: ProgramChat
     className: WebsocketConnection
@@ -354,12 +360,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp.dll
     namespaceName: TMPro.Examples
     className: TMP_TextSelector_B
-  - hash:
-      serializedVersion: 2
-      Hash: 699619b86d9359741a4f58540298c80b
-    assemblyName: UnityEngine.UI.dll
-    namespaceName: UnityEngine.UI
-    className: Text
   - hash:
       serializedVersion: 2
       Hash: c3d3430df9e3ea95e3e3d587961390fb

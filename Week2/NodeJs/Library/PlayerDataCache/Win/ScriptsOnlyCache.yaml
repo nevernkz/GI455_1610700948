@@ -158,7 +158,7 @@ ScriptsOnlyBuild:
     className: SignalAsset
   - hash:
       serializedVersion: 2
-      Hash: 7e32a288f4d7db607534c1024209e5e6
+      Hash: 6ff2fcfb249e51c692578b786b26c9ea
     assemblyName: Assembly-CSharp.dll
     namespaceName: ProgramChat
     className: WebsocketConnection
