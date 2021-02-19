@@ -15,13 +15,12 @@ namespace ProgramChat
     {
         [SerializeField] Text text;
         private WebSocket websocket;
-        public InputField inputIP;
-        public InputField inputPort;
+       
         public InputField Chat;
        
 
-        public GameObject Userno;
-        public GameObject IP, Port, textAddress, TextPort, connectbutton;
+        
+        public GameObject connectbutton;
         public GameObject ChatUI;
         public GameObject ChatTextShowGameObject;
         public GameObject ChatTextshows;
@@ -45,7 +44,7 @@ namespace ProgramChat
 
         public string UserNumber;
         public TextMeshProUGUI textMesh;
-        public int user;
+        
      
 
 
@@ -56,15 +55,9 @@ namespace ProgramChat
             Scrollview.SetActive(false);
             ButtonSendMessage.SetActive(false);
             ChatShowText.SetActive(false);
-            Userno.SetActive(false);
+          
             TextMeshPro.SetActive(false);
-         
-            
-            
-            this.user = 1;
-
-
-
+                
         }
         private void Start()
         {
@@ -78,7 +71,7 @@ namespace ProgramChat
             Textgameobjectother = Chat.text;
             ChatTextshows.GetComponent<Text>().text = ChatTextshow;
 
-            if (user == 0)
+            /*if (user == 0)
             {
                 textMesh.GetComponent<TextMeshProUGUI>().text = "\n<align=right>" + ChatTextshow;
             }
@@ -86,7 +79,7 @@ namespace ProgramChat
             {
                 textMesh.GetComponent<TextMeshProUGUI>().text = "\n<align=left>" + ChatTextshow;
             }
-            
+            */
 
         }
         private void OnDestroy()
@@ -111,10 +104,9 @@ namespace ProgramChat
         {
 
             //TextFormat
-            inputip = inputIP.text;
-            inputport = inputPort.text;
+           
 
-            websocket = new WebSocket("ws://" + inputip + ":" + inputport + "/");
+            websocket = new WebSocket("ws://127.0.0.1:25500/");
 
             websocket.OnMessage += OnMessage;
             websocket.Connect();
@@ -126,11 +118,7 @@ namespace ProgramChat
             //SetActive
             ChatUI.SetActive(true);
             ChatTextShowGameObject.SetActive(false);
-            IP.SetActive(false);
-            Port.SetActive(false);
-            Userno.SetActive(false);
-            textAddress.SetActive(false);
-            TextPort.SetActive(false);
+          
             connectbutton.SetActive(false);
             Scrollview.SetActive(true);
             ButtonSendMessage.SetActive(true);
