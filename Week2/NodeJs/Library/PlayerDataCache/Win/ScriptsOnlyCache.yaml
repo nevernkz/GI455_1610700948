@@ -472,7 +472,7 @@ ScriptsOnlyBuild:
     className: CameraController
   - hash:
       serializedVersion: 2
-      Hash: 22dbf08c2f687806aa85f19e552f3577
+      Hash: 3dca229800beaa6022b7323a8cb0a974
     assemblyName: Assembly-CSharp.dll
     namespaceName: ProgramChat
     className: WebsocketConnection
